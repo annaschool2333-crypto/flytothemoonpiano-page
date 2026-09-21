@@ -11,7 +11,7 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 - `dist/assets/` contains the production images, including personal photos and the featured MTNA certificate.
 - `docs/` contains source materials, PDFs, Word documents, and internal recommendations. Never deploy this directory publicly.
 - `.openai/hosting.json` belongs to the earlier Sites hosting setup; GitHub Pages deployment should not publish it.
-- `.github/workflows/deploy-pages.yml` is the prepared GitHub Pages workflow and uploads only `dist/`.
+- No deployment workflow is currently present. The earlier draft GitHub Pages workflow was removed to prevent accidental publication while the website is unfinished.
 
 ## Website decisions
 
@@ -36,18 +36,17 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 
 - GitHub Pages publishes a publicly accessible website even when its source repository is private.
 - The production output includes Anna's personal photos and an MTNA certificate. Do not publish or push a deployment workflow that makes these assets public until the user explicitly confirms that public exposure is acceptable.
-- Publishing GitHub Pages from a private personal repository requires GitHub Pro or another eligible paid plan. If the account is GitHub Free, stop and ask whether to make the repository public or use another host.
+- The owner's personal GitHub account is currently on GitHub Free. Keep the repository private and do not attempt GitHub Pages from this repository unless the user later changes plans, upgrades, explicitly makes the repository public, or selects another host.
 - Never publish `docs/`, source certificates, internal recommendations, or raw reference materials.
 - Never request or store the user's GitHub or Squarespace password. For web-account changes, ask the user to sign in and share/mention the authenticated browser tab.
 
 ## GitHub Pages status
 
-- `.github/workflows/deploy-pages.yml` has been created locally but is not yet committed or pushed.
-- The workflow deploys only `dist/` using GitHub Actions.
-- Deployment is blocked pending two user confirmations:
-  1. Explicit approval to make the personal photos and MTNA certificate in `dist/` publicly accessible.
-  2. Whether the GitHub account has GitHub Pro or is using GitHub Free.
-- After approval, commit and push the workflow, enable Pages with GitHub Actions, wait for a successful deployment, and verify the default Pages URL before changing DNS.
+- The user has explicitly decided not to publish yet because the website is unfinished.
+- The GitHub account is on GitHub Free, and the repository must remain private for now.
+- There is no active GitHub Pages workflow. Do not create, commit, push, or enable one until the user explicitly says the website is ready to publish.
+- When publication is reconsidered, first review the final site and hosting options. If GitHub Pages is chosen, confirm repository visibility or plan eligibility and obtain explicit approval for public exposure of the personal photos and MTNA certificate.
+- Any future deployment workflow must upload only `dist/`, never the entire repository.
 
 ## Custom domain and Squarespace DNS
 
@@ -56,6 +55,7 @@ This repository contains the static website for Fly to the Moon Piano & Music St
   - `www` CNAME → `ext-sq.squarespace.com`
   - Apex A records → Squarespace IP addresses
 - Do not change DNS before the GitHub Pages site exists and the custom domain is saved in GitHub Pages settings.
+- Do not change any Squarespace DNS records while publication is paused.
 - For the final GitHub Pages configuration, the expected `www` CNAME target is `paulpowang.github.io` (without the repository name).
 - If the apex domain should redirect to `www`, replace the Squarespace apex records with the current GitHub Pages apex records from GitHub's official documentation.
 - DNS changes can interrupt the existing Squarespace site. Verify the GitHub deployment first, make exact DNS changes, then validate both `www` and the apex domain plus HTTPS.
