@@ -244,28 +244,19 @@
     .trial-copy p { max-width: 34rem; color: rgba(255,255,255,.68); }
     .trial-note { margin-top: 1.5rem; padding-top: 1.3rem; border-top: 1px solid rgba(255,255,255,.16); font-size: .85rem; }
     .trial-note strong { display: block; color: #fff; }
-    .inquiry {
-      padding: clamp(1.4rem, 4vw, 2.6rem); border: 1px solid rgba(255,255,255,.14); border-radius: 2px;
+    .google-form-card {
+      position: relative; overflow: hidden; padding: clamp(2rem, 5vw, 4rem);
+      border: 1px solid rgba(255,255,255,.14); border-radius: 2px;
       background: var(--paper); color: var(--ink); box-shadow: var(--shadow);
     }
-    .form-title { margin: 0 0 .3rem; color: var(--midnight); font: 400 1.55rem/1.2 var(--serif); }
-    .form-note { margin: 0 0 1.5rem; color: var(--muted); font-size: .82rem; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    label { display: grid; gap: .4rem; color: #39475c; font-size: .75rem; font-weight: 800; }
-    label.full { grid-column: 1 / -1; }
-    input, select, textarea {
-      width: 100%; min-height: 48px; border: 1px solid #d6d2ca; border-radius: 0;
-      padding: .75rem .8rem; background: #fff; color: var(--ink); font-size: .9rem;
-    }
-    textarea { min-height: 110px; resize: vertical; }
-    .form-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .7rem; margin-top: .35rem; }
-    .inquiry-result {
-      display: none; grid-column: 1 / -1; gap: .8rem; margin-top: .75rem; padding: 1rem;
-      border: 1px solid var(--line); background: var(--blue-light);
-    }
-    .inquiry-result.visible { display: grid; }
-    .inquiry-result p { margin: 0; color: #405066; font-size: .82rem; }
-    .inquiry-result pre { margin: 0; white-space: pre-wrap; color: var(--ink); font: 400 .8rem/1.55 var(--sans); }
+    .google-form-card::after { content: ""; position: absolute; width: 18rem; height: 18rem; right: -7rem; bottom: -8rem; border-radius: 50%; background: var(--blue-light); }
+    .google-form-icon { position: relative; z-index: 1; width: 68px; height: 68px; margin-bottom: 2.5rem; }
+    .google-form-card .kicker { position: relative; z-index: 1; }
+    .google-form-card h3 { position: relative; z-index: 1; max-width: 12ch; margin: 0; color: var(--midnight); font: 400 clamp(2rem, 4vw, 3.35rem)/1.05 var(--serif); letter-spacing: -.03em; }
+    .google-form-card > p:not(.kicker) { position: relative; z-index: 1; max-width: 34rem; margin: 1.2rem 0 0; color: var(--muted); }
+    .google-form-points { position: relative; z-index: 1; display: grid; gap: .7rem; margin: 1.7rem 0 2rem; padding: 1.4rem 0; border-block: 1px solid var(--line); color: #455166; font-size: .82rem; }
+    .google-form-points span::before { content: "✓"; margin-right: .65rem; color: #8a6937; font-weight: 900; }
+    .google-form-card .button { position: relative; z-index: 1; }
 
     .site-footer { padding: 2.5rem 0; background: #0a1426; color: rgba(255,255,255,.68); }
     .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr auto; gap: 2rem; align-items: center; }
@@ -335,9 +326,7 @@
       .principle:nth-child(4) { background: #f4eee2; }
       .principle h3 { margin-top: 2rem; }
       .moon-mission { grid-template-columns: 1fr; }
-      .form-grid { grid-template-columns: 1fr; }
-      label.full, .form-actions, .inquiry-result { grid-column: auto; }
-      .form-actions .button { width: 100%; }
+      .google-form-card .button { width: 100%; }
       .footer-grid { grid-template-columns: 1fr; text-align: center; }
       .footer-grid .brand { justify-content: center; }
       .footer-copy { grid-column: auto; grid-row: auto; }
@@ -520,21 +509,15 @@
           <p>No previous piano experience is required. Come as you are and bring your curiosity.</p>
           <div class="trial-note"><strong>Studio area</strong>Renton, WA 98059 · Exact directions after lesson confirmation</div>
         </div>
-        <form class="inquiry reveal" id="inquiry-form">
-          <h3 class="form-title">Prepare a lesson inquiry</h3>
-          <p class="form-note">Complete the details below to create a concise inquiry you can copy or share.</p>
-          <div class="form-grid">
-            <label>Parent or student name<input id="name" name="name" autocomplete="name" required></label>
-            <label>Email<input id="email" name="email" type="email" autocomplete="email" required></label>
-            <label>Student age<input id="age" name="age" inputmode="numeric" placeholder="Optional"></label>
-            <label>Preferred lesson length<select id="length" name="length"><option>30 minutes</option><option>60 minutes</option><option>Not sure yet</option></select></label>
-            <label>Piano experience<select id="experience" name="experience"><option>New beginner</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label>
-            <label>Main goal<select id="goal" name="goal"><option>Play for joy</option><option>RCM or ABRSM</option><option>Competition or performance</option><option>Early childhood music</option><option>Music theory</option><option>Not sure yet</option></select></label>
-            <label class="full">Anything Anna should know?<textarea id="message" name="message" placeholder="Musical interests, scheduling needs, or questions"></textarea></label>
-            <div class="form-actions"><button class="button dark" type="submit">Create my inquiry <span class="arrow" aria-hidden="true">→</span></button></div>
-            <div class="inquiry-result" id="inquiry-result" aria-live="polite"><p>Your inquiry is ready. Copy it or use your device's share menu.</p><pre id="inquiry-text"></pre><div class="form-actions"><button class="button dark small" id="copy-inquiry" type="button">Copy inquiry</button><button class="button dark small" id="share-inquiry" type="button">Share inquiry</button></div></div>
-          </div>
-        </form>
+        <!-- TEST FORM: replace this Google Forms URL before the production launch. -->
+        <div class="google-form-card reveal">
+          <svg class="google-form-icon" viewBox="0 0 68 68" aria-hidden="true"><circle cx="34" cy="34" r="34" fill="#edf4fb"/><path d="M43 14a22 22 0 1 0 12 36A19 19 0 1 1 43 14Z" fill="#23446d"/><path d="M32 25v19a5.5 5.5 0 1 1-3-4.9V28l15-3v15a5.5 5.5 0 1 1-3-4.9V22Z" fill="#c9a76b"/></svg>
+          <p class="kicker">Trial lesson inquiry</p>
+          <h3>Tell us about your musical goals.</h3>
+          <p>A short Google Form will open in a new tab. Share the student's experience, interests, and preferred lesson format so Anna can prepare for the first conversation.</p>
+          <div class="google-form-points" aria-label="Inquiry details"><span>Takes only a few minutes</span><span>No Google sign-in should be required</span><span>Your response goes directly to the studio</span></div>
+          <a class="button dark" href="https://docs.google.com/forms/d/e/1FAIpQLSfJgAS0_JMXfiNnenWkMx8otNkGItf7xklfPVHP2Dj5pTeLOw/viewform?usp=header" target="_blank" rel="noopener noreferrer">Open trial inquiry form <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
       </div>
     </section>
   </main>
@@ -552,11 +535,6 @@
       const header = document.getElementById('site-header');
       const menuButton = document.getElementById('menu-toggle');
       const nav = document.getElementById('nav-links');
-      const form = document.getElementById('inquiry-form');
-      const result = document.getElementById('inquiry-result');
-      const inquiryText = document.getElementById('inquiry-text');
-      let preparedInquiry = '';
-
       const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 24);
       updateHeader();
       window.addEventListener('scroll', updateHeader, { passive: true });
@@ -579,32 +557,6 @@
       });
       nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
       document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
-
-      const copyText = async text => {
-        if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
-        const area = document.createElement('textarea');
-        area.value = text; area.style.position = 'fixed'; area.style.opacity = '0'; document.body.appendChild(area);
-        area.select(); document.execCommand('copy'); area.remove();
-      };
-
-      form.addEventListener('submit', event => {
-        event.preventDefault();
-        const value = id => document.getElementById(id).value.trim();
-        preparedInquiry = `Trial lesson inquiry\n\nName: ${value('name')}\nEmail: ${value('email')}\nStudent age: ${value('age') || 'Not provided'}\nLesson length: ${value('length')}\nExperience: ${value('experience')}\nMain goal: ${value('goal')}\n\nNotes: ${value('message') || 'No additional notes'}`;
-        inquiryText.textContent = preparedInquiry;
-        result.classList.add('visible');
-        result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      });
-
-      document.getElementById('copy-inquiry').addEventListener('click', async event => {
-        await copyText(preparedInquiry);
-        const button = event.currentTarget; const previous = button.textContent;
-        button.textContent = 'Copied'; setTimeout(() => button.textContent = previous, 1800);
-      });
-      document.getElementById('share-inquiry').addEventListener('click', async () => {
-        if (navigator.share) await navigator.share({ title: 'Piano lesson inquiry', text: preparedInquiry });
-        else await copyText(preparedInquiry);
-      });
 
       document.getElementById('year').textContent = new Date().getFullYear();
       const observer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {

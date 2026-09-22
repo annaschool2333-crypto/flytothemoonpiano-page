@@ -16,7 +16,9 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 ## Website decisions
 
 - The website is static; it does not require a backend for its current features.
-- The inquiry form currently prepares text for copy/share. It does not submit to a database or Google Form.
+- The Book a Trial section uses a website-styled CTA button that opens a temporary public Google Form in a new tab. Do not embed the form in an iframe unless the user explicitly changes this decision.
+- Temporary test form URL: `https://docs.google.com/forms/d/e/1FAIpQLSfJgAS0_JMXfiNnenWkMx8otNkGItf7xklfPVHP2Dj5pTeLOw/viewform`.
+- This test form URL must be replaced before production launch. Search for `TEST FORM` in `dist/index.html` when replacing it.
 - The credential section intentionally emphasizes one primary qualification: Nationally Certified Teacher of Music in Piano.
 - Other education and coursework should remain concise text so they support the teaching story without being presented as equivalent professional music credentials.
 - Do not expose exact home/studio directions. Public location copy should remain limited to Renton, WA 98059 and nearby service areas.
