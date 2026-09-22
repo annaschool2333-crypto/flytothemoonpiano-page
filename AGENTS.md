@@ -8,7 +8,7 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 
 - `dist/` is the production website and the **only** directory that should be published.
 - `dist/index.html` contains the site HTML, CSS, and JavaScript in one file.
-- `dist/assets/` contains the production images, including personal photos and the featured MTNA certificate.
+- `dist/assets/` contains the production photos and hero artwork. Certificate images must not be included in the production output.
 - `docs/` contains source materials, PDFs, Word documents, and internal recommendations. Never deploy this directory publicly.
 - `.openai/hosting.json` belongs to the earlier Sites hosting setup; GitHub Pages deployment should not publish it.
 - No deployment workflow is currently present. The earlier draft GitHub Pages workflow was removed to prevent accidental publication while the website is unfinished.
@@ -21,6 +21,7 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 - This test form URL must be replaced before production launch. Search for `TEST FORM` in `dist/index.html` when replacing it.
 - The credential section intentionally emphasizes one primary qualification: Nationally Certified Teacher of Music in Piano.
 - Other education and coursework should remain concise text so they support the teaching story without being presented as equivalent professional music credentials.
+- The user explicitly chose not to display certificate scans on the website. Present qualifications as text with restrained inline SVG icons; keep original certificate files only in internal `docs/` source materials.
 - Do not expose exact home/studio directions. Public location copy should remain limited to Renton, WA 98059 and nearby service areas.
 - Preserve accessibility, responsive behavior, reduced-motion support, working mobile navigation, and relative asset paths.
 
@@ -37,7 +38,7 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 ## Publication and privacy guardrails
 
 - GitHub Pages publishes a publicly accessible website even when its source repository is private.
-- The production output includes Anna's personal photos and an MTNA certificate. Do not publish or push a deployment workflow that makes these assets public until the user explicitly confirms that public exposure is acceptable.
+- The production output includes Anna's personal photos. Do not publish or push a deployment workflow that makes these assets public until the user explicitly confirms that public exposure is acceptable.
 - The owner's personal GitHub account is currently on GitHub Free. Keep the repository private and do not attempt GitHub Pages from this repository unless the user later changes plans, upgrades, explicitly makes the repository public, or selects another host.
 - Never publish `docs/`, source certificates, internal recommendations, or raw reference materials.
 - Never request or store the user's GitHub or Squarespace password. For web-account changes, ask the user to sign in and share/mention the authenticated browser tab.
@@ -47,7 +48,7 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 - The user has explicitly decided not to publish yet because the website is unfinished.
 - The GitHub account is on GitHub Free, and the repository must remain private for now.
 - There is no active GitHub Pages workflow. Do not create, commit, push, or enable one until the user explicitly says the website is ready to publish.
-- When publication is reconsidered, first review the final site and hosting options. If GitHub Pages is chosen, confirm repository visibility or plan eligibility and obtain explicit approval for public exposure of the personal photos and MTNA certificate.
+- When publication is reconsidered, first review the final site and hosting options. If GitHub Pages is chosen, confirm repository visibility or plan eligibility and obtain explicit approval for public exposure of the personal photos.
 - Any future deployment workflow must upload only `dist/`, never the entire repository.
 
 ## Custom domain and Squarespace DNS
