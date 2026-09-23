@@ -12,6 +12,7 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 - `docs/` contains source materials, PDFs, Word documents, and internal recommendations. Never deploy this directory publicly.
 - `.openai/hosting.json` belongs to the earlier Sites hosting setup; GitHub Pages deployment should not publish it.
 - No deployment workflow is currently present. The earlier draft GitHub Pages workflow was removed to prevent accidental publication while the website is unfinished.
+- The user reports that the site has now been deployed manually to Cloudflare. The exact Cloudflare product (`*.pages.dev` versus `*.workers.dev`), project name, production URL, and Git integration status have not yet been verified.
 
 ## Website decisions
 
@@ -38,7 +39,7 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 ## Publication and privacy guardrails
 
 - GitHub Pages publishes a publicly accessible website even when its source repository is private.
-- The production output includes Anna's personal photos. Do not publish or push a deployment workflow that makes these assets public until the user explicitly confirms that public exposure is acceptable.
+- The production output includes Anna's personal photos. The user has already chosen to deploy the site through Cloudflare; do not move it to another host or expose internal `docs/` materials.
 - The owner's personal GitHub account is currently on GitHub Free. Keep the repository private and do not attempt GitHub Pages from this repository unless the user later changes plans, upgrades, explicitly makes the repository public, or selects another host.
 - Never publish `docs/`, source certificates, internal recommendations, or raw reference materials.
 - Never request or store the user's GitHub or Squarespace password. For web-account changes, ask the user to sign in and share/mention the authenticated browser tab.
@@ -54,21 +55,22 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 ## Custom domain and Squarespace DNS
 
 - Intended primary domain: `www.flytothemoonpiano.com`.
+- The domain is registered through Squarespace. Domain registration and DNS hosting are separate from the Cloudflare deployment.
 - Current DNS still points to Squarespace:
   - `www` CNAME → `ext-sq.squarespace.com`
   - Apex A records → Squarespace IP addresses
-- Do not change DNS before the GitHub Pages site exists and the custom domain is saved in GitHub Pages settings.
-- Do not change any Squarespace DNS records while publication is paused.
-- For the final GitHub Pages configuration, the expected `www` CNAME target is `paulpowang.github.io` (without the repository name).
-- If the apex domain should redirect to `www`, replace the Squarespace apex records with the current GitHub Pages apex records from GitHub's official documentation.
-- DNS changes can interrupt the existing Squarespace site. Verify the GitHub deployment first, make exact DNS changes, then validate both `www` and the apex domain plus HTTPS.
+- Do not change Squarespace DNS until the exact Cloudflare production hostname and deployment type are confirmed.
+- If this is Cloudflare Pages, add `www.flytothemoonpiano.com` under the Pages project's Custom domains first, then set the Squarespace `www` CNAME to the project's exact `<project>.pages.dev` hostname. A manually created CNAME without first associating the custom domain can fail.
+- If this is a Cloudflare Worker custom domain, the domain must be an active Cloudflare zone; do not assume the Pages CNAME procedure applies.
+- Connecting the apex domain `flytothemoonpiano.com` directly to Cloudflare Pages requires delegating nameservers to Cloudflare. A `www` subdomain can remain on external Squarespace DNS using CNAME.
+- DNS changes can interrupt the current Squarespace destination. Verify the Cloudflare deployment first, make exact DNS changes, then validate `www`, apex redirect behavior, and HTTPS.
 
 ## Verification before handoff
 
 - Confirm all asset references under `dist/` resolve.
 - Test desktop and mobile widths and check for horizontal overflow.
 - Test the mobile menu, anchors, FAQ controls, and inquiry form.
-- After deployment, verify the GitHub Actions run, public URL, custom-domain DNS, redirect behavior, and HTTPS certificate.
+- After Cloudflare deployment or domain changes, verify the production deployment, public URL, custom-domain DNS, redirect behavior, and HTTPS certificate.
 - Keep temporary QA files out of the repository.
 
 ## Living-instruction requirement
