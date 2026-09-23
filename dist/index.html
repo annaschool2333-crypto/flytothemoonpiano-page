@@ -242,8 +242,10 @@
     .trial-copy .kicker { color: var(--gold-bright); }
     .trial-copy .display { color: #fff; max-width: 8ch; }
     .trial-copy p { max-width: 34rem; color: rgba(255,255,255,.68); }
-    .trial-note { margin-top: 1.5rem; padding-top: 1.3rem; border-top: 1px solid rgba(255,255,255,.16); font-size: .85rem; }
+    .trial-note { display: grid; gap: 1rem; margin-top: 1.5rem; padding-top: 1.3rem; border-top: 1px solid rgba(255,255,255,.16); font-size: .85rem; }
     .trial-note strong { display: block; color: #fff; }
+    .trial-note a { color: var(--gold-bright); font-weight: 700; text-decoration: underline; text-decoration-color: rgba(240,211,158,.38); text-underline-offset: .22em; }
+    .trial-note a:hover { text-decoration-color: currentColor; }
     .google-form-card {
       position: relative; overflow: hidden; padding: clamp(2rem, 5vw, 4rem);
       border: 1px solid rgba(255,255,255,.14); border-radius: 2px;
@@ -262,6 +264,8 @@
     .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr auto; gap: 2rem; align-items: center; }
     .footer-brand { color: #fff; }
     .footer-copy { font-size: .78rem; }
+    .footer-copy a { color: #fff; text-decoration: underline; text-decoration-color: rgba(255,255,255,.25); text-underline-offset: .2em; }
+    .footer-copy a:hover { color: var(--gold-bright); text-decoration-color: currentColor; }
     .back-top { color: var(--gold-bright); font-size: .78rem; font-weight: 800; }
 
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
@@ -507,16 +511,18 @@
           <h2 class="display">Ready to take flight?</h2>
           <p>A trial lesson is a chance to meet, explore the piano, and talk about the student's current level, interests, learning style, and goals.</p>
           <p>No previous piano experience is required. Come as you are and bring your curiosity.</p>
-          <div class="trial-note"><strong>Studio area</strong>Renton, WA 98059 · Exact directions after lesson confirmation</div>
+          <div class="trial-note">
+            <div><strong>Studio area</strong>Renton, WA 98059 · Exact directions after lesson confirmation</div>
+            <div><strong>Email</strong><a href="mailto:moonlovemelody520@gmail.com">moonlovemelody520@gmail.com</a></div>
+          </div>
         </div>
-        <!-- TEST FORM: replace this Google Forms URL before the production launch. -->
         <div class="google-form-card reveal">
           <svg class="google-form-icon" viewBox="0 0 68 68" aria-hidden="true"><circle cx="34" cy="34" r="34" fill="#edf4fb"/><path d="M43 14a22 22 0 1 0 12 36A19 19 0 1 1 43 14Z" fill="#23446d"/><path d="M32 25v19a5.5 5.5 0 1 1-3-4.9V28l15-3v15a5.5 5.5 0 1 1-3-4.9V22Z" fill="#c9a76b"/></svg>
           <p class="kicker">Trial lesson inquiry</p>
           <h3>Tell us about your musical goals.</h3>
           <p>A short Google Form will open in a new tab. Share the student's experience, interests, and preferred lesson format so Anna can prepare for the first conversation.</p>
           <div class="google-form-points" aria-label="Inquiry details"><span>Takes only a few minutes</span><span>No Google sign-in should be required</span><span>Your response goes directly to the studio</span></div>
-          <a class="button dark" href="https://docs.google.com/forms/d/e/1FAIpQLSfJgAS0_JMXfiNnenWkMx8otNkGItf7xklfPVHP2Dj5pTeLOw/viewform?usp=header" target="_blank" rel="noopener noreferrer">Open trial inquiry form <span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="button dark" href="https://docs.google.com/forms/d/e/1FAIpQLSc6c9_bHG8ZmEys1GOgaVO02bmRHWofc457C0pebnBd2_wlbQ/viewform?usp=header" target="_blank" rel="noopener noreferrer">Open trial inquiry form <span class="arrow" aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
@@ -525,7 +531,7 @@
   <footer class="site-footer">
     <div class="shell footer-grid">
       <a class="brand footer-brand" href="#home" aria-label="Back to Fly to the Moon home"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M41 7a25 25 0 1 0 15 41A21 21 0 1 1 41 7Z" fill="#f0d39e"/><path d="M31 18v27a7 7 0 1 1-4-6.2V23l19-4v21a7 7 0 1 1-4-6.2V14Z" fill="#fff"/></svg><span class="brand-copy">FLY TO THE MOON<small>PIANO &amp; MUSIC STUDIO</small></span></a>
-      <div class="footer-copy">Private piano &amp; music theory lessons<br>Renton, Washington · 98059 · © <span id="year">2026</span></div>
+      <div class="footer-copy">Private piano &amp; music theory lessons<br><a href="mailto:moonlovemelody520@gmail.com">moonlovemelody520@gmail.com</a><br>Renton, Washington · 98059 · © <span id="year">2026</span></div>
       <a class="back-top" href="#home">Back to top ↑</a>
     </div>
   </footer>

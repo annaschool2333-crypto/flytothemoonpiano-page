@@ -16,9 +16,9 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 ## Website decisions
 
 - The website is static; it does not require a backend for its current features.
-- The Book a Trial section uses a website-styled CTA button that opens a temporary public Google Form in a new tab. Do not embed the form in an iframe unless the user explicitly changes this decision.
-- Temporary test form URL: `https://docs.google.com/forms/d/e/1FAIpQLSfJgAS0_JMXfiNnenWkMx8otNkGItf7xklfPVHP2Dj5pTeLOw/viewform`.
-- This test form URL must be replaced before production launch. Search for `TEST FORM` in `dist/index.html` when replacing it.
+- The Book a Trial section uses a website-styled CTA button that opens the official public Google Form in a new tab. Do not embed the form in an iframe unless the user explicitly changes this decision.
+- Official inquiry form URL: `https://docs.google.com/forms/d/e/1FAIpQLSc6c9_bHG8ZmEys1GOgaVO02bmRHWofc457C0pebnBd2_wlbQ/viewform`.
+- Official public contact email: `moonlovemelody520@gmail.com`. Keep it available as a clickable `mailto:` link in the Book a Trial section and footer; the Google Form remains the primary inquiry path.
 - The credential section intentionally emphasizes one primary qualification: Nationally Certified Teacher of Music in Piano.
 - Other education and coursework should remain concise text so they support the teaching story without being presented as equivalent professional music credentials.
 - The user explicitly chose not to display certificate scans on the website. Present qualifications as text with restrained inline SVG icons; keep original certificate files only in internal `docs/` source materials.
