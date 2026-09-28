@@ -8,15 +8,19 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 
 - `dist/` is the production website and the **only** directory that should be published.
 - `dist/index.html` contains the site HTML, CSS, and JavaScript in one file.
-- `dist/assets/` contains the production photos and hero artwork. Certificate images must not be included in the production output.
+- `dist/album/index.html` is the production album page. Navigation uses explicit `index.html` paths so both filesystem previews and Cloudflare routing work without showing a directory listing.
+- `dist/assets/` contains the production photos and hero artwork. `dist/assets/album/` contains optimized WebP copies used by the album page. Certificate images must not be included in the production output.
+- `album/` contains the owner's original album source photos. Keep these originals out of `dist/`; when the album changes, create optimized copies under `dist/assets/album/`, update the album markup, and redeploy.
 - `docs/` contains source materials, PDFs, Word documents, and internal recommendations. Never deploy this directory publicly.
 - `.openai/hosting.json` belongs to the earlier Sites hosting setup; GitHub Pages deployment should not publish it.
 - No deployment workflow is currently present. The earlier draft GitHub Pages workflow was removed to prevent accidental publication while the website is unfinished.
-- The user reports that the site has now been deployed manually to Cloudflare. The exact Cloudflare product (`*.pages.dev` versus `*.workers.dev`), project name, production URL, and Git integration status have not yet been verified.
+- The site is deployed as a Cloudflare Worker named `flytothemoonpiano-page` using Workers Static Assets from `dist/`. `workers.dev` is disabled. Production is public at `https://flytothemoonpiano.com/` and `https://www.flytothemoonpiano.com/`.
 
 ## Website decisions
 
 - The website is static; it does not require a backend for its current features.
+- The album is intentionally static. Updating its photos requires optimizing/copying the new images into `dist/assets/album/`, updating `dist/album/index.html`, and redeploying. No Google Drive API integration is currently used.
+- Album photos intentionally have no visible captions. Keep concise `alt` text for accessibility, but do not display it in the gallery or lightbox unless the user requests captions later.
 - The Book a Trial section uses a website-styled CTA button that opens the official public Google Form in a new tab. Do not embed the form in an iframe unless the user explicitly changes this decision.
 - Official inquiry form URL: `https://docs.google.com/forms/d/e/1FAIpQLSc6c9_bHG8ZmEys1GOgaVO02bmRHWofc457C0pebnBd2_wlbQ/viewform`.
 - Official public contact email: `moonlovemelody520@gmail.com`. Keep it available as a clickable `mailto:` link in the Book a Trial section and footer; the Google Form remains the primary inquiry path.
@@ -46,7 +50,7 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 
 ## GitHub Pages status
 
-- The user has explicitly decided not to publish yet because the website is unfinished.
+- The Cloudflare Worker was published to both production custom domains on 2026-09-26 after the user approved the DNS cutover. This does not change the separate restriction against GitHub Pages.
 - The GitHub account is on GitHub Free, and the repository must remain private for now.
 - There is no active GitHub Pages workflow. Do not create, commit, push, or enable one until the user explicitly says the website is ready to publish.
 - When publication is reconsidered, first review the final site and hosting options. If GitHub Pages is chosen, confirm repository visibility or plan eligibility and obtain explicit approval for public exposure of the personal photos.
@@ -56,14 +60,12 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 
 - Intended primary domain: `www.flytothemoonpiano.com`.
 - The domain is registered through Squarespace. Domain registration and DNS hosting are separate from the Cloudflare deployment.
-- Current DNS still points to Squarespace:
-  - `www` CNAME → `ext-sq.squarespace.com`
-  - Apex A records → Squarespace IP addresses
-- Do not change Squarespace DNS until the exact Cloudflare production hostname and deployment type are confirmed.
-- If this is Cloudflare Pages, add `www.flytothemoonpiano.com` under the Pages project's Custom domains first, then set the Squarespace `www` CNAME to the project's exact `<project>.pages.dev` hostname. A manually created CNAME without first associating the custom domain can fail.
-- If this is a Cloudflare Worker custom domain, the domain must be an active Cloudflare zone; do not assume the Pages CNAME procedure applies.
-- Connecting the apex domain `flytothemoonpiano.com` directly to Cloudflare Pages requires delegating nameservers to Cloudflare. A `www` subdomain can remain on external Squarespace DNS using CNAME.
-- DNS changes can interrupt the current Squarespace destination. Verify the Cloudflare deployment first, make exact DNS changes, then validate `www`, apex redirect behavior, and HTTPS.
+- Squarespace changed the registrar nameservers on 2026-09-25. Public resolvers `1.1.1.1` and `8.8.8.8` now return Cloudflare's assigned nameservers (`garret.ns.cloudflare.com` and `tina.ns.cloudflare.com`), and the Cloudflare zone reports `active`, `full`, and not paused.
+- On 2026-09-26 the user deleted the four imported Squarespace apex A records and the `www` CNAME to `ext-sq.squarespace.com`. `_domainconnect` and all TXT records were intentionally preserved.
+- Wrangler then deployed version `cb675379-b772-44bb-8be7-be17f2d7382a` and successfully attached Worker Custom Domains for both `flytothemoonpiano.com` and `www.flytothemoonpiano.com`. Cloudflare issued a separate certificate for each hostname.
+- Final production verification succeeded: both HTTPS URLs return HTTP 200, serve the expected `Fly to the Moon Piano & Music Studio` HTML, and return HTTP 200 for both production image assets. Both hostnames currently serve the same content directly; no apex-to-`www` redirect is configured.
+- Keep `_domainconnect` and the existing TXT records unless a separate email/domain verification change requires otherwise.
+- The local Worker preview was verified on 2026-09-25: `/` returned 200 and both production image assets returned 200. This did not create a public route.
 
 ## Verification before handoff
 

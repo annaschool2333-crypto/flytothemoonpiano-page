@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b31">
+  <meta name="description" content="Studio recitals, performances, and musical moments from Fly to the Moon Piano &amp; Music Studio in Renton, Washington.">
+  <title>Album | Fly to the Moon Piano &amp; Music Studio</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101b31'/%3E%3Cpath d='M41 10a22 22 0 1 0 13 36A19 19 0 1 1 41 10Z' fill='%23f5d397'/%3E%3Cpath d='M31 20v24a7 7 0 1 1-4-6.3V24l18-4v19a7 7 0 1 1-4-6.3V16Z' fill='%23f8f2e7'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --midnight: #101b31;
+      --navy: #172946;
+      --blue: #d9e6f4;
+      --ivory: #f8f2e7;
+      --paper: #fffdf8;
+      --gold: #c9a76b;
+      --gold-bright: #f0d39e;
+      --ink: #172238;
+      --muted: #5e6878;
+      --line: rgba(23, 41, 70, .16);
+      --shadow: 0 24px 70px rgba(9, 20, 39, .18);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; overflow-x: hidden; background: var(--ivory); color: var(--ink); font: 400 1rem/1.7 var(--sans); text-rendering: optimizeLegibility; }
+    body.menu-open, body.lightbox-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid #d9a94e; outline-offset: 4px; }
+    ::selection { background: var(--gold-bright); color: var(--midnight); }
+    .shell { width: min(1180px, calc(100% - 2.5rem)); margin-inline: auto; }
+    .skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 100; padding: .7rem 1rem; border-radius: 999px; background: var(--paper); color: var(--midnight); }
+    .skip-link:focus { top: 1rem; }
+    .kicker { margin: 0 0 .9rem; color: var(--gold-bright); font-size: .75rem; font-weight: 800; letter-spacing: .18em; line-height: 1.4; text-transform: uppercase; }
+    .display { margin: 0; color: #fff; font: 400 clamp(3.1rem, 6vw, 4.75rem)/.96 var(--serif); letter-spacing: -.045em; }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: .6rem; border: 1px solid transparent; border-radius: 999px; padding: .78rem 1.2rem; background: var(--gold-bright); color: var(--midnight); font-size: .88rem; font-weight: 800; letter-spacing: .035em; box-shadow: 0 12px 28px rgba(4,13,27,.18); transition: transform .2s ease, background .2s ease; }
+    .button:hover { transform: translateY(-2px); background: #f9e2b7; }
+    .button.small { min-height: 42px; padding: .65rem 1rem; font-size: .8rem; }
+
+    .site-header { position: fixed; inset: 0 0 auto; z-index: 40; color: #fff; background: rgba(12,25,45,.96); box-shadow: 0 1px 0 rgba(255,255,255,.1); backdrop-filter: blur(14px); }
+    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .brand { display: inline-flex; align-items: center; gap: .8rem; min-width: 0; }
+    .brand-mark { width: 42px; height: 42px; flex: 0 0 42px; filter: drop-shadow(0 6px 12px rgba(0,0,0,.25)); }
+    .brand-copy { display: grid; gap: .05rem; font-family: var(--serif); font-size: 1rem; letter-spacing: .075em; line-height: 1.15; }
+    .brand-copy small { font: 700 .58rem/1.3 var(--sans); letter-spacing: .2em; opacity: .78; }
+    .nav-links { display: flex; align-items: center; gap: 1.35rem; font-size: .78rem; font-weight: 700; }
+    .nav-links > a:not(.button) { padding-block: 1rem; opacity: .86; }
+    .nav-links > a:not(.button):hover, .nav-links > a[aria-current="page"] { color: var(--gold-bright); opacity: 1; }
+    .menu-toggle { display: none; width: 46px; height: 46px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; background: rgba(12,25,45,.35); color: #fff; cursor: pointer; }
+    .menu-toggle span { display: block; width: 18px; height: 2px; margin: 4px auto; background: currentColor; transition: .2s ease; }
+
+    .album-hero { position: relative; min-height: 360px; display: grid; align-items: end; overflow: hidden; isolation: isolate; background: var(--midnight); color: #fff; }
+    .album-hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background: radial-gradient(circle at 76% 18%, rgba(77,126,181,.4), transparent 28%), radial-gradient(circle at 18% 72%, rgba(201,167,107,.2), transparent 28%), linear-gradient(120deg, #0a1426, #172946 68%, #203e64); }
+    .album-hero::after { content: "♪"; position: absolute; right: 7vw; bottom: -15%; z-index: -1; color: rgba(255,255,255,.035); font: 400 clamp(18rem, 42vw, 38rem)/1 var(--serif); transform: rotate(-8deg); }
+    .album-hero-inner { width: 100%; padding: 6rem 0 2rem; }
+    .album-hero-copy { max-width: 900px; padding-left: 2rem; border-left: 1px solid rgba(255,255,255,.42); }
+    .album-hero-copy p:last-child { max-width: 46rem; margin: 1.15rem 0 0; color: rgba(255,255,255,.7); font-size: 1rem; }
+
+    .gallery-section { padding: clamp(3rem, 4.5vw, 4rem) 0; background: var(--paper); }
+    .gallery-head { display: grid; grid-template-columns: .8fr 1.2fr; gap: 2rem; align-items: end; margin-bottom: 2rem; }
+    .gallery-title { margin: 0; color: var(--midnight); font: 400 clamp(2.2rem, 4.5vw, 4.25rem)/1.02 var(--serif); letter-spacing: -.035em; }
+    .gallery-intro { max-width: 38rem; margin: 0 0 .35rem auto; color: var(--muted); }
+    .gallery { columns: 3 280px; column-gap: 1.15rem; }
+    .photo { position: relative; width: 100%; margin: 0 0 1.15rem; padding: 0; overflow: hidden; break-inside: avoid; border: 0; background: var(--blue); color: #fff; cursor: zoom-in; box-shadow: 0 10px 32px rgba(9,20,39,.12); }
+    .photo img { width: 100%; height: auto; transition: transform .5s cubic-bezier(.2,.7,.2,1), filter .4s ease; }
+    .photo::after { content: "View photo  ↗"; position: absolute; inset: auto .8rem .8rem auto; padding: .45rem .7rem; border-radius: 999px; background: rgba(10,20,38,.84); color: #fff; font-size: .7rem; font-weight: 800; letter-spacing: .05em; opacity: 0; transform: translateY(6px); transition: .25s ease; }
+    .photo:hover img { transform: scale(1.025); filter: saturate(1.03); }
+    .photo:hover::after, .photo:focus-visible::after { opacity: 1; transform: none; }
+    .gallery-note { display: flex; justify-content: space-between; gap: 1.5rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .78rem; }
+
+    .album-cta { padding: clamp(4.5rem, 8vw, 7rem) 0; background: var(--navy); color: #fff; }
+    .album-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 2.5rem; }
+    .album-cta h2 { max-width: 12ch; margin: 0; font: 400 clamp(2rem, 4vw, 3.7rem)/1.05 var(--serif); letter-spacing: -.03em; }
+    .album-cta p { max-width: 34rem; margin: .9rem 0 0; color: rgba(255,255,255,.65); }
+
+    .site-footer { padding: 2.5rem 0; background: #0a1426; color: rgba(255,255,255,.68); }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr auto; gap: 2rem; align-items: center; }
+    .footer-brand { color: #fff; }
+    .footer-copy { font-size: .78rem; }
+    .footer-copy a { color: #fff; text-decoration: underline; text-decoration-color: rgba(255,255,255,.25); text-underline-offset: .2em; }
+    .back-top { color: var(--gold-bright); font-size: .78rem; font-weight: 800; }
+
+    dialog { width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(5,11,21,.96); color: #fff; }
+    dialog::backdrop { background: rgba(5,11,21,.96); }
+    .lightbox { height: 100%; display: grid; grid-template-rows: auto minmax(0,1fr); padding: 1rem; }
+    .lightbox-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .2rem .2rem 1rem; }
+    .lightbox-count { color: rgba(255,255,255,.65); font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .icon-button { display: grid; width: 46px; height: 46px; place-items: center; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; background: rgba(255,255,255,.06); color: #fff; cursor: pointer; font-size: 1.35rem; }
+    .lightbox-stage { min-height: 0; display: grid; grid-template-columns: 54px minmax(0,1fr) 54px; gap: 1rem; align-items: center; }
+    .lightbox-stage img { max-width: 100%; max-height: calc(100dvh - 9rem); margin: auto; object-fit: contain; box-shadow: 0 24px 80px rgba(0,0,0,.42); }
+
+    @media (max-width: 980px) {
+      .menu-toggle { display: block; }
+      .brand, .menu-toggle { position: relative; z-index: 2; }
+      .nav-links { position: fixed; inset: 0; z-index: 1; display: grid; align-content: center; justify-items: center; gap: .3rem; padding: 6rem 1.5rem 2rem; background: rgba(10,20,38,.98); font-family: var(--serif); font-size: 1.5rem; opacity: 0; visibility: hidden; transform: translateY(-12px); transition: .22s ease; }
+      .nav-links.open { opacity: 1; visibility: visible; transform: none; }
+      .nav-links .button { margin-top: 1rem; font-family: var(--sans); font-size: .85rem; }
+      .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(6px) rotate(45deg); }
+      .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+      .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-6px) rotate(-45deg); }
+      .gallery-head { grid-template-columns: 1fr; }
+      .gallery-intro { margin-left: 0; }
+      .gallery { columns: 2 260px; }
+      .album-cta-inner { align-items: flex-start; flex-direction: column; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .back-top { text-align: right; }
+    }
+
+    @media (max-width: 620px) {
+      .shell { width: min(100% - 1.5rem, 1180px); }
+      .nav { min-height: 72px; }
+      .brand-copy { font-size: .86rem; }
+      .brand-copy small { font-size: .5rem; }
+      .album-hero { min-height: 370px; }
+      .album-hero-inner { padding: 7.5rem 0 2.5rem; }
+      .album-hero-copy { padding-left: 1.2rem; }
+      .gallery { columns: 1; }
+      .photo::after { opacity: 1; transform: none; }
+      .gallery-note { display: block; }
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .footer-brand { justify-content: center; }
+      .back-top { text-align: center; }
+      .lightbox-stage { grid-template-columns: 1fr; }
+      .lightbox-stage .icon-button { position: fixed; bottom: 1rem; z-index: 2; }
+      .lightbox-prev { left: 1rem; }
+      .lightbox-next { right: 1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to album</a>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="../index.html" aria-label="Fly to the Moon Piano and Music Studio home">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M41 7a25 25 0 1 0 15 41A21 21 0 1 1 41 7Z" fill="#f0d39e"/><path d="M31 18v27a7 7 0 1 1-4-6.2V23l19-4v21a7 7 0 1 1-4-6.2V14Z" fill="#fff"/></svg>
+        <span class="brand-copy">FLY TO THE MOON<small>PIANO &amp; MUSIC STUDIO</small></span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
+      <nav class="nav-links" id="nav-links" aria-label="Primary navigation">
+        <a href="../index.html#about">Meet Anna</a>
+        <a href="../index.html#lessons">Lessons</a>
+        <a href="../index.html#studio">Studio</a>
+        <a href="../index.html#philosophy">Philosophy</a>
+        <a href="index.html" aria-current="page">Album</a>
+        <a href="../index.html#faq">FAQ</a>
+        <a class="button small" href="../index.html#trial">Book a Trial <span aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="album-hero" aria-labelledby="album-title">
+      <div class="shell album-hero-inner">
+        <div class="album-hero-copy">
+          <p class="kicker">Studio album · Music in motion</p>
+          <h1 class="display" id="album-title">Moments worth remembering.</h1>
+          <p>Recitals, performances, celebrations, and the small musical milestones that make every student's journey unique.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section" aria-labelledby="gallery-title">
+      <div class="shell">
+        <div class="gallery-head">
+          <div><p class="kicker" style="color:#8a6937">From the studio</p><h2 class="gallery-title" id="gallery-title">Our musical journey</h2></div>
+          <p class="gallery-intro">A glimpse into the learning, courage, joy, and connection that happen when music is shared. Select any photo to see the full image.</p>
+        </div>
+        <div class="gallery" id="gallery">
+          <button class="photo" type="button" data-index="0" aria-label="Open photo: recital celebration with teacher and students"><img src="../assets/album/8.webp" alt="Teacher with two students holding flowers after a recital" width="1086" height="1448" loading="eager" decoding="async"></button>
+          <button class="photo" type="button" data-index="1" aria-label="Open photo: teacher and recital guest"><img src="../assets/album/9.webp" alt="Teacher and guest holding flowers beside a grand piano" width="1086" height="1448" loading="lazy" decoding="async"></button>
+          <button class="photo" type="button" data-index="2" aria-label="Open photo: student performance"><img src="../assets/album/10.webp" alt="Teacher supporting a young student during a keyboard performance" width="1096" height="1435" loading="lazy" decoding="async"></button>
+          <button class="photo" type="button" data-index="3" aria-label="Open photo: grand piano performance"><img src="../assets/album/11.webp" alt="Pianist performing at a grand piano on the recital stage" width="1534" height="1600" loading="lazy" decoding="async"></button>
+          <button class="photo" type="button" data-index="4" aria-label="Open photo: teacher at the piano"><img src="../assets/album/12.webp" alt="Anna standing beside a grand piano" width="1086" height="1448" loading="lazy" decoding="async"></button>
+        </div>
+        <div class="gallery-note"><span>Fly to the Moon Piano &amp; Music Studio</span><span>Renton, Washington</span></div>
+      </div>
+    </section>
+
+    <section class="album-cta" aria-labelledby="album-cta-title">
+      <div class="shell album-cta-inner">
+        <div><h2 id="album-cta-title">Begin your own musical story.</h2><p>Meet Anna, explore the piano, and discover a lesson path shaped around your interests and goals.</p></div>
+        <a class="button" href="../index.html#trial">Book a Trial Lesson <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <a class="brand footer-brand" href="../index.html" aria-label="Back to Fly to the Moon home"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M41 7a25 25 0 1 0 15 41A21 21 0 1 1 41 7Z" fill="#f0d39e"/><path d="M31 18v27a7 7 0 1 1-4-6.2V23l19-4v21a7 7 0 1 1-4-6.2V14Z" fill="#fff"/></svg><span class="brand-copy">FLY TO THE MOON<small>PIANO &amp; MUSIC STUDIO</small></span></a>
+      <div class="footer-copy">Private piano &amp; music theory lessons<br><a href="mailto:moonlovemelody520@gmail.com">moonlovemelody520@gmail.com</a><br>Renton, Washington · 98059 · © <span id="year">2026</span></div>
+      <a class="back-top" href="#main">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <dialog id="lightbox" aria-label="Photo viewer">
+    <div class="lightbox">
+      <div class="lightbox-top"><span class="lightbox-count" id="lightbox-count">Photo 1 of 5</span><button class="icon-button" id="lightbox-close" type="button" aria-label="Close photo viewer">×</button></div>
+      <div class="lightbox-stage">
+        <button class="icon-button lightbox-prev" id="lightbox-prev" type="button" aria-label="Previous photo">←</button>
+        <img id="lightbox-image" src="../assets/album/8.webp" alt="">
+        <button class="icon-button lightbox-next" id="lightbox-next" type="button" aria-label="Next photo">→</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      const menuButton = document.getElementById('menu-toggle');
+      const nav = document.getElementById('nav-links');
+      const closeMenu = () => {
+        nav.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation menu');
+      };
+      menuButton.addEventListener('click', () => {
+        const open = menuButton.getAttribute('aria-expanded') === 'true';
+        if (open) closeMenu();
+        else {
+          nav.classList.add('open');
+          document.body.classList.add('menu-open');
+          menuButton.setAttribute('aria-expanded', 'true');
+          menuButton.setAttribute('aria-label', 'Close navigation menu');
+        }
+      });
+      nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const photos = [...document.querySelectorAll('.photo')];
+      const dialog = document.getElementById('lightbox');
+      const image = document.getElementById('lightbox-image');
+      const count = document.getElementById('lightbox-count');
+      let activeIndex = 0;
+      let opener = null;
+
+      const showPhoto = index => {
+        activeIndex = (index + photos.length) % photos.length;
+        const source = photos[activeIndex].querySelector('img');
+        image.src = source.src;
+        image.alt = source.alt;
+        count.textContent = `Photo ${activeIndex + 1} of ${photos.length}`;
+      };
+      const openLightbox = index => {
+        opener = photos[index];
+        showPhoto(index);
+        dialog.showModal();
+        document.body.classList.add('lightbox-open');
+      };
+      const closeLightbox = () => dialog.close();
+
+      photos.forEach((photo, index) => photo.addEventListener('click', () => openLightbox(index)));
+      document.getElementById('lightbox-prev').addEventListener('click', () => showPhoto(activeIndex - 1));
+      document.getElementById('lightbox-next').addEventListener('click', () => showPhoto(activeIndex + 1));
+      document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+      dialog.addEventListener('click', event => { if (event.target === dialog) closeLightbox(); });
+      dialog.addEventListener('close', () => { document.body.classList.remove('lightbox-open'); opener?.focus(); });
+      dialog.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft') { event.preventDefault(); showPhoto(activeIndex - 1); }
+        if (event.key === 'ArrowRight') { event.preventDefault(); showPhoto(activeIndex + 1); }
+      });
+      document.addEventListener('keydown', event => { if (event.key === 'Escape' && !dialog.open) closeMenu(); });
+    })();
+  </script>
+</body>
+</html>
