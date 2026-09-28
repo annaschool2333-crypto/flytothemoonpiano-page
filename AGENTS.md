@@ -62,8 +62,9 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 - The domain is registered through Squarespace. Domain registration and DNS hosting are separate from the Cloudflare deployment.
 - Squarespace changed the registrar nameservers on 2026-09-25. Public resolvers `1.1.1.1` and `8.8.8.8` now return Cloudflare's assigned nameservers (`garret.ns.cloudflare.com` and `tina.ns.cloudflare.com`), and the Cloudflare zone reports `active`, `full`, and not paused.
 - On 2026-09-26 the user deleted the four imported Squarespace apex A records and the `www` CNAME to `ext-sq.squarespace.com`. `_domainconnect` and all TXT records were intentionally preserved.
-- Wrangler then deployed version `cb675379-b772-44bb-8be7-be17f2d7382a` and successfully attached Worker Custom Domains for both `flytothemoonpiano.com` and `www.flytothemoonpiano.com`. Cloudflare issued a separate certificate for each hostname.
-- Final production verification succeeded: both HTTPS URLs return HTTP 200, serve the expected `Fly to the Moon Piano & Music Studio` HTML, and return HTTP 200 for both production image assets. Both hostnames currently serve the same content directly; no apex-to-`www` redirect is configured.
+- Wrangler initially deployed version `cb675379-b772-44bb-8be7-be17f2d7382a` and successfully attached Worker Custom Domains for both `flytothemoonpiano.com` and `www.flytothemoonpiano.com`. Cloudflare issued a separate certificate for each hostname.
+- On 2026-09-27, version `11685f85-dc23-4b4b-8195-25395cf55541` deployed the static album page and optimized album images. Production verification confirmed HTTP 200 and the expected new content for both homepages, both `/album/` URLs, and representative WebP album assets.
+- Both hostnames currently serve the same content directly; no apex-to-`www` redirect is configured.
 - Keep `_domainconnect` and the existing TXT records unless a separate email/domain verification change requires otherwise.
 - The local Worker preview was verified on 2026-09-25: `/` returned 200 and both production image assets returned 200. This did not create a public route.
 
