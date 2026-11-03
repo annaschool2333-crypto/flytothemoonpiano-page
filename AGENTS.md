@@ -13,8 +13,8 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 - `album/` contains the owner's original album source photos. Keep these originals out of `dist/`; when the album changes, create optimized copies under `dist/assets/album/`, update the album markup, and redeploy.
 - `docs/` contains source materials, PDFs, Word documents, and internal recommendations. Never deploy this directory publicly.
 - `.openai/hosting.json` belongs to the earlier Sites hosting setup; GitHub Pages deployment should not publish it.
-- No deployment workflow is currently present. The earlier draft GitHub Pages workflow was removed to prevent accidental publication while the website is unfinished.
-- The site is deployed as a Cloudflare Worker named `flytothemoonpiano-page` using Workers Static Assets from `dist/`. `workers.dev` is disabled. Production is public at `https://flytothemoonpiano.com/` and `https://www.flytothemoonpiano.com/`.
+- This fork uses GitHub Pages branch deployment from `gh-pages`; there is no custom workflow.
+- The upstream site uses Cloudflare. This fork is published independently through GitHub Pages as described below.
 
 ## Website decisions
 
@@ -32,31 +32,18 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 
 ## Git and GitHub
 
-- Repository: `https://github.com/paulpowang/flytothemoonpiano-page.git`
-- Default branch: `main`
-- Git identity: `PoHung Wang <wang.po.hung@gmail.com>`
-- GitHub CLI is installed at `C:\Users\wangp\AppData\Local\Programs\GitHub CLI\2.101.0\bin\gh.exe`.
-- GitHub CLI authentication is separate from Git Credential Manager. Check `gh auth status` before using GitHub APIs.
-- The exact repository path has been added to Git `safe.directory` because the working copy was created under a different sandbox identity.
-- Keep the repository private unless the user explicitly approves changing its visibility.
+- Fork: `https://github.com/annaschool2333-crypto/flytothemoonpiano-page`
+- Default source branch: `main`; this fork is public.
+- On 2026-11-02 the owner explicitly requested publication of this fork through GitHub Pages using GitHub CLI. This supersedes the inherited upstream restrictions on Pages publication.
+- GitHub Pages publishes only the contents of `dist/`, copied as the root tree of the `gh-pages` branch.
+- Public URL: `https://annaschool2333-crypto.github.io/flytothemoonpiano-page/`
+- This is a snapshot deployment. Future edits to `main/dist` require updating `gh-pages` to the new `dist` tree; they do not deploy automatically.
+- Do not publish `docs/`, raw `album/` originals, certificates, or `.openai/`.
+- Preserve relative asset and navigation paths for the repository subpath.
+- The existing upstream Cloudflare custom domains and DNS are separate; do not change them for this fork.
+- No GitHub Actions workflow was added. Branch publishing works with the current CLI authorization.
 
-## Publication and privacy guardrails
-
-- GitHub Pages publishes a publicly accessible website even when its source repository is private.
-- The production output includes Anna's personal photos. The user has already chosen to deploy the site through Cloudflare; do not move it to another host or expose internal `docs/` materials.
-- The owner's personal GitHub account is currently on GitHub Free. Keep the repository private and do not attempt GitHub Pages from this repository unless the user later changes plans, upgrades, explicitly makes the repository public, or selects another host.
-- Never publish `docs/`, source certificates, internal recommendations, or raw reference materials.
-- Never request or store the user's GitHub or Squarespace password. For web-account changes, ask the user to sign in and share/mention the authenticated browser tab.
-
-## GitHub Pages status
-
-- The Cloudflare Worker was published to both production custom domains on 2026-09-26 after the user approved the DNS cutover. This does not change the separate restriction against GitHub Pages.
-- The GitHub account is on GitHub Free, and the repository must remain private for now.
-- There is no active GitHub Pages workflow. Do not create, commit, push, or enable one until the user explicitly says the website is ready to publish.
-- When publication is reconsidered, first review the final site and hosting options. If GitHub Pages is chosen, confirm repository visibility or plan eligibility and obtain explicit approval for public exposure of the personal photos.
-- Any future deployment workflow must upload only `dist/`, never the entire repository.
-
-## Custom domain and Squarespace DNS
+## Historical upstream custom domain and Squarespace DNS
 
 - Intended primary domain: `www.flytothemoonpiano.com`.
 - The domain is registered through Squarespace. Domain registration and DNS hosting are separate from the Cloudflare deployment.
