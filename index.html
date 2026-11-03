@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b31">
+  <meta name="description" content="Private piano and music theory lessons for children and adults in Renton, Washington, taught by nationally certified piano educator Anna Zhu.">
+  <title>Fly to the Moon Piano &amp; Music Studio</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101b31'/%3E%3Cpath d='M41 10a22 22 0 1 0 13 36A19 19 0 1 1 41 10Z' fill='%23f5d397'/%3E%3Cpath d='M31 20v24a7 7 0 1 1-4-6.3V24l18-4v19a7 7 0 1 1-4-6.3V16Z' fill='%23f8f2e7'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --midnight: #101b31;
+      --navy: #172946;
+      --navy-2: #23446d;
+      --blue: #d9e6f4;
+      --blue-light: #edf4fb;
+      --ivory: #f8f2e7;
+      --paper: #fffdf8;
+      --gold: #c9a76b;
+      --gold-bright: #f0d39e;
+      --ink: #172238;
+      --muted: #5e6878;
+      --line: rgba(23, 41, 70, 0.16);
+      --shadow: 0 24px 70px rgba(9, 20, 39, 0.18);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--ivory);
+      color: var(--ink);
+      font: 400 1rem/1.7 var(--sans);
+      text-rendering: optimizeLegibility;
+    }
+    body.menu-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid #d9a94e; outline-offset: 4px; }
+    ::selection { background: var(--gold-bright); color: var(--midnight); }
+
+    .skip-link {
+      position: fixed; left: 1rem; top: -5rem; z-index: 100;
+      padding: .7rem 1rem; background: var(--paper); color: var(--midnight); border-radius: 999px;
+    }
+    .skip-link:focus { top: 1rem; }
+    .shell { width: min(1180px, calc(100% - 2.5rem)); margin-inline: auto; }
+    .kicker {
+      margin: 0 0 .9rem; color: #8a6937; font-size: .75rem; font-weight: 800;
+      letter-spacing: .18em; line-height: 1.4; text-transform: uppercase;
+    }
+    .display {
+      margin: 0; color: var(--midnight); font-family: var(--serif); font-weight: 400;
+      font-size: clamp(2.5rem, 5.4vw, 5.5rem); letter-spacing: -.045em; line-height: .98;
+    }
+    .section-title {
+      margin: 0; color: var(--midnight); font-family: var(--serif); font-weight: 400;
+      font-size: clamp(2.25rem, 4.2vw, 4.25rem); letter-spacing: -.035em; line-height: 1.02;
+    }
+    .section-intro { max-width: 46rem; margin: 1.25rem 0 0; color: var(--muted); font-size: 1.05rem; }
+    .section-head { display: grid; gap: 1.5rem; margin-bottom: 3.25rem; }
+    .section-head.center { justify-items: center; text-align: center; }
+    .section-head.center .section-intro { margin-inline: auto; }
+    .button {
+      display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: .6rem;
+      border: 1px solid transparent; border-radius: 999px; padding: .78rem 1.2rem;
+      background: var(--gold-bright); color: var(--midnight); cursor: pointer;
+      font-size: .88rem; font-weight: 800; letter-spacing: .035em;
+      box-shadow: 0 12px 28px rgba(4, 13, 27, .18); transition: transform .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: #f9e2b7; }
+    .button.secondary { border-color: rgba(255,255,255,.38); background: rgba(13,25,45,.2); color: #fff; box-shadow: none; }
+    .button.dark { background: var(--midnight); color: #fff; }
+    .button.small { min-height: 42px; padding: .65rem 1rem; font-size: .8rem; }
+    .arrow { font-size: 1.15em; line-height: 1; transition: transform .2s ease; }
+    .button:hover .arrow { transform: translateX(3px); }
+
+    .site-header {
+      position: fixed; inset: 0 0 auto; z-index: 40; color: #fff;
+      background: linear-gradient(180deg, rgba(7,14,27,.82), rgba(7,14,27,.35) 72%, transparent);
+      transition: background .25s ease, box-shadow .25s ease;
+    }
+    .site-header.scrolled { background: rgba(12, 25, 45, .96); box-shadow: 0 1px 0 rgba(255,255,255,.1); backdrop-filter: blur(14px); }
+    .nav { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .brand { display: inline-flex; align-items: center; gap: .8rem; min-width: 0; }
+    .brand-mark { width: 42px; height: 42px; flex: 0 0 42px; filter: drop-shadow(0 6px 12px rgba(0,0,0,.25)); }
+    .brand-copy { display: grid; gap: .05rem; font-family: var(--serif); font-size: 1rem; letter-spacing: .075em; line-height: 1.15; }
+    .brand-copy small { font: 700 .58rem/1.3 var(--sans); letter-spacing: .2em; opacity: .78; }
+    .nav-links { display: flex; align-items: center; gap: 1.35rem; font-size: .78rem; font-weight: 700; }
+    .nav-links > a:not(.button) { padding-block: 1rem; opacity: .86; }
+    .nav-links > a:not(.button):hover { opacity: 1; color: var(--gold-bright); }
+    .menu-toggle {
+      display: none; width: 46px; height: 46px; border: 1px solid rgba(255,255,255,.3); border-radius: 50%;
+      background: rgba(12,25,45,.35); color: #fff; cursor: pointer;
+    }
+    .menu-toggle span { display: block; width: 18px; height: 2px; margin: 4px auto; background: currentColor; transition: .2s ease; }
+
+    .hero {
+      position: relative; min-height: min(940px, 100svh); display: grid; align-items: end; overflow: hidden;
+      isolation: isolate; background: var(--midnight) url("assets/hero.png") center 42% / cover no-repeat;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(90deg, rgba(6,14,28,.18) 0%, transparent 46%, rgba(6,14,28,.1) 70%),
+                  linear-gradient(0deg, rgba(6,14,28,.91) 0%, rgba(6,14,28,.08) 48%, rgba(6,14,28,.32) 100%);
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: auto 0 0; height: 17rem; z-index: -1;
+      background: linear-gradient(0deg, var(--midnight), transparent);
+    }
+    .hero-inner { width: 100%; padding: 9.5rem 0 3.5rem; }
+    .hero-panel {
+      width: min(650px, 100%); margin-left: auto; padding: 1.25rem 0 0 2rem;
+      color: #fff; border-left: 1px solid rgba(255,255,255,.44);
+    }
+    .hero-panel .kicker { color: var(--gold-bright); }
+    .hero-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); }
+    .hero-lead { margin: 0 0 .25rem; font: 400 clamp(1.5rem, 2.8vw, 2.55rem)/1.15 var(--serif); }
+    .hero-note { max-width: 34rem; margin: .8rem 0 1.5rem; color: rgba(255,255,255,.78); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .hero-facts {
+      margin-top: 3rem; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.74);
+    }
+    .hero-fact { padding: 1.25rem 1.25rem 0 0; }
+    .hero-fact strong { display: block; color: #fff; font: 400 1.03rem/1.3 var(--serif); }
+    .hero-fact span { font-size: .76rem; }
+
+    .intro-strip { position: relative; background: var(--midnight); color: #fff; }
+    .intro-strip::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 80% 12%, rgba(95,144,201,.22), transparent 30%); }
+    .promise-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,.12); }
+    .promise { min-height: 215px; padding: 2.3rem 2rem; border-right: 1px solid rgba(255,255,255,.12); }
+    .promise:last-child { border-right: 0; }
+    .promise-index { color: var(--gold-bright); font: 700 .72rem/1 var(--sans); letter-spacing: .16em; }
+    .promise h2 { margin: 2.25rem 0 .5rem; font: 400 1.35rem/1.2 var(--serif); }
+    .promise p { margin: 0; color: rgba(255,255,255,.62); font-size: .86rem; line-height: 1.55; }
+
+    .about { position: relative; padding: clamp(5rem, 10vw, 9rem) 0; background: var(--paper); }
+    .about::before { content: "02"; position: absolute; top: 3rem; right: 3vw; color: rgba(23,41,70,.045); font: 400 clamp(8rem, 18vw, 16rem)/1 var(--serif); }
+    .about-grid { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: clamp(3rem, 7vw, 7rem); align-items: center; }
+    .portrait-wrap { position: relative; padding: 0 0 2.5rem 2.5rem; }
+    .portrait-wrap::before { content: ""; position: absolute; inset: 2.5rem 2.5rem 0 0; background: var(--blue); }
+    .portrait-wrap img { position: relative; width: 100%; height: min(690px, 72vw); object-fit: cover; object-position: center 32%; box-shadow: var(--shadow); }
+    .portrait-label {
+      position: absolute; right: -1rem; bottom: 0; padding: 1rem 1.2rem; background: var(--midnight); color: #fff;
+      font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+    }
+    .about-copy { position: relative; }
+    .about-copy .section-title { max-width: 11ch; }
+    .about-copy p { max-width: 42rem; margin: 1.1rem 0; color: #465266; }
+    .credential-line { margin: 1.8rem 0; padding: .2rem 0 .2rem 1.4rem; border-left: 2px solid var(--gold); color: var(--midnight); font-family: var(--serif); font-size: 1.1rem; }
+    .about-signature { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 2rem; }
+    .tag { padding: .4rem .7rem; border: 1px solid var(--line); border-radius: 999px; color: #455166; font-size: .73rem; font-weight: 700; }
+
+    .credentials { padding: clamp(5rem, 9vw, 8rem) 0; background: var(--blue-light); }
+    .credentials-copy { max-width: 1080px; margin-inline: auto; }
+    .credentials-heading { max-width: 760px; margin-inline: auto; text-align: center; }
+    .credentials-heading .section-intro { max-width: 48rem; margin-inline: auto; }
+    .credential-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 3rem; }
+    .credential-item {
+      display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1.3rem; align-items: start;
+      min-height: 190px; padding: clamp(1.5rem, 3vw, 2.1rem); border: 1px solid rgba(23,41,70,.12);
+      background: var(--paper); box-shadow: 0 16px 36px rgba(19,41,70,.07);
+    }
+    .credential-icon { display: grid; width: 58px; height: 58px; place-items: center; border-radius: 50%; background: var(--midnight); color: var(--gold-bright); }
+    .credential-icon svg { width: 32px; height: 32px; }
+    .credential-item h3 { margin: .1rem 0 .45rem; color: var(--midnight); font: 400 1.3rem/1.25 var(--serif); }
+    .credential-item p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.6; }
+
+    .lessons { padding: clamp(5rem, 10vw, 9rem) 0; background: var(--paper); }
+    .lesson-layout { display: grid; grid-template-columns: .74fr 1.26fr; gap: clamp(3rem, 7vw, 7rem); align-items: start; }
+    .lesson-aside { position: sticky; top: 120px; }
+    .lesson-aside .display { max-width: 7ch; }
+    .lesson-aside .section-intro { margin-bottom: 1.6rem; }
+    .durations { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+    .duration { padding: 1rem; border: 1px solid var(--line); background: var(--ivory); }
+    .duration strong { display: block; color: var(--midnight); font-family: var(--serif); font-size: 1.08rem; font-weight: 400; }
+    .duration span { color: var(--muted); font-size: .75rem; line-height: 1.45; }
+    .lesson-list { border-top: 1px solid var(--line); }
+    .lesson-item {
+      display: grid; grid-template-columns: 3.25rem minmax(0, 1fr); gap: 1rem;
+      padding: 1.65rem 0; border-bottom: 1px solid var(--line);
+    }
+    .lesson-item span { color: #9a7844; font-size: .72rem; font-weight: 800; letter-spacing: .12em; }
+    .lesson-item h3 { margin: -.15rem 0 .35rem; color: var(--midnight); font: 400 clamp(1.3rem, 2vw, 1.75rem)/1.2 var(--serif); }
+    .lesson-item p { margin: 0; color: var(--muted); font-size: .92rem; }
+
+    .studio { padding: clamp(5rem, 10vw, 9rem) 0; background: var(--midnight); color: #fff; }
+    .studio-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr); gap: clamp(3rem, 7vw, 7rem); align-items: center; }
+    .studio-image { position: relative; min-height: 620px; }
+    .studio-image::before { content: ""; position: absolute; inset: 0 2.75rem 2.75rem 0; border: 1px solid rgba(240,211,158,.45); }
+    .studio-image img { position: absolute; inset: 2.75rem 0 0 2.75rem; width: calc(100% - 2.75rem); height: calc(100% - 2.75rem); object-fit: cover; object-position: center 58%; }
+    .studio-copy .kicker { color: var(--gold-bright); }
+    .studio-copy .section-title { color: #fff; }
+    .studio-copy p { color: rgba(255,255,255,.68); }
+    .location { margin: 1.7rem 0; padding: 1.25rem 0; border-block: 1px solid rgba(255,255,255,.15); }
+    .location strong { display: block; color: #fff; font: 400 1.2rem/1.3 var(--serif); }
+    .location span { color: rgba(255,255,255,.58); font-size: .83rem; }
+
+    .philosophy { position: relative; padding: clamp(5rem, 10vw, 9rem) 0; background: var(--ivory); }
+    .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .principle { min-height: 300px; padding: clamp(2rem, 5vw, 4rem); background: var(--paper); }
+    .principle:nth-child(2), .principle:nth-child(3) { background: #f4eee2; }
+    .principle-number { color: #9a7844; font-size: .7rem; font-weight: 800; letter-spacing: .16em; }
+    .principle h3 { margin: 4rem 0 .8rem; color: var(--midnight); font: 400 clamp(1.55rem, 3vw, 2.25rem)/1.1 var(--serif); }
+    .principle p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .moon-mission {
+      display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: center; margin-top: 1px;
+      padding: 2rem clamp(2rem, 5vw, 4rem); background: var(--navy-2); color: #fff;
+    }
+    .moon-icon { width: 62px; height: 62px; }
+    .moon-mission h3 { margin: 0 0 .35rem; font: 400 1.45rem/1.2 var(--serif); }
+    .moon-mission p { max-width: 54rem; margin: 0; color: rgba(255,255,255,.68); font-size: .9rem; }
+
+    .faq { padding: clamp(5rem, 9vw, 8rem) 0; background: var(--paper); }
+    .faq-grid { display: grid; grid-template-columns: .68fr 1.32fr; gap: clamp(3rem, 7vw, 7rem); }
+    .faq-intro { position: sticky; top: 120px; align-self: start; }
+    .faq-list { border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary {
+      position: relative; list-style: none; padding: 1.45rem 3.3rem 1.45rem 0; cursor: pointer;
+      color: var(--midnight); font: 400 1.12rem/1.35 var(--serif);
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: .5rem; top: 1.25rem; font: 300 1.6rem/1 var(--sans); transition: transform .2s ease; }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { margin: -.25rem 0 1.4rem; padding-right: 3rem; color: var(--muted); font-size: .92rem; }
+
+    .trial { position: relative; padding: clamp(5rem, 9vw, 8rem) 0; overflow: hidden; background: var(--navy); color: #fff; }
+    .trial::before {
+      content: ""; position: absolute; inset: 0; opacity: .32;
+      background: radial-gradient(circle at 18% 8%, rgba(240,211,158,.7) 0 1px, transparent 2px) 0 0/90px 90px,
+                  radial-gradient(circle at 70% 38%, rgba(255,255,255,.62) 0 1px, transparent 2px) 0 0/135px 135px,
+                  radial-gradient(circle at 92% 12%, rgba(113,167,224,.36), transparent 26%);
+    }
+    .trial-grid { position: relative; display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(3rem, 7vw, 7rem); align-items: start; }
+    .trial-copy .kicker { color: var(--gold-bright); }
+    .trial-copy .display { color: #fff; max-width: 8ch; }
+    .trial-copy p { max-width: 34rem; color: rgba(255,255,255,.68); }
+    .trial-note { display: grid; gap: 1rem; margin-top: 1.5rem; padding-top: 1.3rem; border-top: 1px solid rgba(255,255,255,.16); font-size: .85rem; }
+    .trial-note strong { display: block; color: #fff; }
+    .trial-note a { color: var(--gold-bright); font-weight: 700; text-decoration: underline; text-decoration-color: rgba(240,211,158,.38); text-underline-offset: .22em; }
+    .trial-note a:hover { text-decoration-color: currentColor; }
+    .google-form-card {
+      position: relative; overflow: hidden; padding: clamp(2rem, 5vw, 4rem);
+      border: 1px solid rgba(255,255,255,.14); border-radius: 2px;
+      background: var(--paper); color: var(--ink); box-shadow: var(--shadow);
+    }
+    .google-form-card::after { content: ""; position: absolute; width: 18rem; height: 18rem; right: -7rem; bottom: -8rem; border-radius: 50%; background: var(--blue-light); }
+    .google-form-icon { position: relative; z-index: 1; width: 68px; height: 68px; margin-bottom: 2.5rem; }
+    .google-form-card .kicker { position: relative; z-index: 1; }
+    .google-form-card h3 { position: relative; z-index: 1; max-width: 12ch; margin: 0; color: var(--midnight); font: 400 clamp(2rem, 4vw, 3.35rem)/1.05 var(--serif); letter-spacing: -.03em; }
+    .google-form-card > p:not(.kicker) { position: relative; z-index: 1; max-width: 34rem; margin: 1.2rem 0 0; color: var(--muted); }
+    .google-form-points { position: relative; z-index: 1; display: grid; gap: .7rem; margin: 1.7rem 0 2rem; padding: 1.4rem 0; border-block: 1px solid var(--line); color: #455166; font-size: .82rem; }
+    .google-form-points span::before { content: "✓"; margin-right: .65rem; color: #8a6937; font-weight: 900; }
+    .google-form-card .button { position: relative; z-index: 1; }
+
+    .site-footer { padding: 2.5rem 0; background: #0a1426; color: rgba(255,255,255,.68); }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr auto; gap: 2rem; align-items: center; }
+    .footer-brand { color: #fff; }
+    .footer-copy { font-size: .78rem; }
+    .footer-copy a { color: #fff; text-decoration: underline; text-decoration-color: rgba(255,255,255,.25); text-underline-offset: .2em; }
+    .footer-copy a:hover { color: var(--gold-bright); text-decoration-color: currentColor; }
+    .back-top { color: var(--gold-bright); font-size: .78rem; font-weight: 800; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 980px) {
+      .menu-toggle { display: block; }
+      .brand, .menu-toggle { position: relative; z-index: 2; }
+      .nav-links {
+        position: fixed; inset: 0; z-index: 1; display: grid; align-content: center; justify-items: center; gap: .3rem;
+        padding: 6rem 1.5rem 2rem; background: rgba(10,20,38,.98); font-family: var(--serif); font-size: 1.5rem;
+        opacity: 0; visibility: hidden; transform: translateY(-12px); transition: .22s ease;
+      }
+      .nav-links.open { opacity: 1; visibility: visible; transform: none; }
+      .nav-links .button { margin-top: 1rem; font-family: var(--sans); font-size: .85rem; }
+      .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(6px) rotate(45deg); }
+      .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+      .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-6px) rotate(-45deg); }
+      .promise-grid { grid-template-columns: 1fr 1fr; }
+      .promise:nth-child(2) { border-right: 0; }
+      .promise:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.12); }
+      .about-grid, .lesson-layout, .studio-grid, .faq-grid, .trial-grid { grid-template-columns: 1fr; }
+      .credential-list { grid-template-columns: 1fr; }
+      .lesson-aside, .faq-intro { position: static; }
+      .lesson-aside .display { max-width: none; }
+      .studio-image { min-height: 540px; }
+      .footer-grid { grid-template-columns: 1fr auto; }
+      .footer-copy { grid-column: 1 / -1; grid-row: 2; }
+    }
+
+    @media (max-width: 680px) {
+      html { scroll-padding-top: 70px; }
+      .shell { width: min(100% - 1.5rem, 1180px); }
+      .nav { min-height: 70px; }
+      .brand-mark { width: 36px; height: 36px; flex-basis: 36px; }
+      .brand-copy { font-size: .86rem; }
+      .brand-copy small { font-size: .5rem; }
+      .hero { min-height: 820px; background-position: 58% 34%; }
+      .hero::before { background: linear-gradient(0deg, rgba(6,14,28,.94) 0%, rgba(6,14,28,.22) 54%, rgba(6,14,28,.35) 100%); }
+      .hero-inner { padding-bottom: 2rem; }
+      .hero-panel { padding-left: 1.1rem; }
+      .hero-actions { display: grid; grid-template-columns: 1fr; }
+      .hero-actions .button { width: 100%; }
+      .hero-facts { grid-template-columns: 1fr; gap: .2rem; margin-top: 1.7rem; }
+      .hero-fact { display: flex; gap: .5rem; align-items: baseline; padding-top: .55rem; }
+      .hero-fact strong { font-size: .94rem; }
+      .promise-grid, .philosophy-grid { grid-template-columns: 1fr; }
+      .promise { min-height: auto; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+      .promise h2 { margin-top: 1.35rem; }
+      .portrait-wrap { padding: 0 0 1.25rem 1.25rem; }
+      .portrait-wrap::before { inset: 1.25rem 1.25rem 0 0; }
+      .portrait-wrap img { height: 570px; }
+      .portrait-label { right: 0; font-size: .64rem; }
+      .credential-item { min-height: auto; grid-template-columns: 3rem minmax(0, 1fr); gap: 1rem; }
+      .credential-icon { width: 48px; height: 48px; }
+      .credential-icon svg { width: 27px; height: 27px; }
+      .durations { grid-template-columns: 1fr; }
+      .lesson-item { grid-template-columns: 2.5rem minmax(0, 1fr); }
+      .studio-image { min-height: 430px; }
+      .studio-image::before { inset: 0 1.5rem 1.5rem 0; }
+      .studio-image img { inset: 1.5rem 0 0 1.5rem; width: calc(100% - 1.5rem); height: calc(100% - 1.5rem); }
+      .principle { min-height: auto; }
+      .principle:nth-child(3) { background: var(--paper); }
+      .principle:nth-child(4) { background: #f4eee2; }
+      .principle h3 { margin-top: 2rem; }
+      .moon-mission { grid-template-columns: 1fr; }
+      .google-form-card .button { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .footer-grid .brand { justify-content: center; }
+      .footer-copy { grid-column: auto; grid-row: auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header" id="site-header">
+    <div class="shell nav">
+      <a class="brand" href="#home" aria-label="Fly to the Moon Piano and Music Studio home">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M41 7a25 25 0 1 0 15 41A21 21 0 1 1 41 7Z" fill="#f0d39e"/><path d="M31 18v27a7 7 0 1 1-4-6.2V23l19-4v21a7 7 0 1 1-4-6.2V14Z" fill="#fff"/></svg>
+        <span class="brand-copy">FLY TO THE MOON<small>PIANO &amp; MUSIC STUDIO</small></span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
+      <nav class="nav-links" id="nav-links" aria-label="Primary navigation">
+        <a href="#about">Meet Anna</a>
+        <a href="#lessons">Lessons</a>
+        <a href="#studio">Studio</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="album/index.html">Album</a>
+        <a href="#faq">FAQ</a>
+        <a class="button small" href="#trial">Book a Trial <span class="arrow" aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="shell hero-inner">
+        <h1 class="hero-title" id="hero-title">Fly to the Moon Piano and Music Studio</h1>
+        <div class="hero-panel">
+          <p class="kicker">Private lessons in Renton, Washington</p>
+          <p class="hero-lead">Piano &amp; music theory for children and adults</p>
+          <p class="hero-note">Personalized lessons for first notes, favorite songs, examinations, recitals, competitions, and a lifelong relationship with music.</p>
+          <div class="hero-actions">
+            <a class="button" href="#trial">Book a Trial Lesson <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="button secondary" href="#lessons">Explore Lessons</a>
+          </div>
+          <div class="hero-facts" aria-label="Studio highlights">
+            <div class="hero-fact"><strong>Children &amp; adults</strong><span>All stages welcome</span></div>
+            <div class="hero-fact"><strong>30 or 60 minutes</strong><span>Focused weekly lessons</span></div>
+            <div class="hero-fact"><strong>RCM &amp; ABRSM</strong><span>Exam preparation available</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-strip" aria-label="Studio values">
+      <div class="shell promise-grid">
+        <article class="promise"><span class="promise-index">01</span><h2>Personalized learning</h2><p>Lessons shaped around each student's goals, age, experience, and way of learning.</p></article>
+        <article class="promise"><span class="promise-index">02</span><h2>A supportive environment</h2><p>A calm place to ask questions, make mistakes, build trust, and grow with confidence.</p></article>
+        <article class="promise"><span class="promise-index">03</span><h2>Meaningful progress</h2><p>Clear foundations and thoughtful challenges, guided at a pace that stays encouraging.</p></article>
+        <article class="promise"><span class="promise-index">04</span><h2>A place to dream</h2><p>Music for joy, self-expression, performance, exams, and everything that comes next.</p></article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="shell about-grid">
+        <div class="portrait-wrap reveal">
+          <img src="assets/anna-black.png" alt="Piano educator Anna Zhu seated at a grand piano" width="1086" height="1448">
+          <div class="portrait-label">Music · Communication · Growth</div>
+        </div>
+        <div class="about-copy reveal">
+          <p class="kicker">Meet your teacher</p>
+          <h2 class="section-title">Meet Anna Zhu</h2>
+          <p>Anna is a pianist, nationally certified piano educator, and the founder of Fly to the Moon Piano &amp; Music Studio. She holds a master's degree in Communication and Public Relations from Johns Hopkins University.</p>
+          <p>Her experience includes teaching children and adults across different ages, learning styles, and musical goals, including children on the autism spectrum and older adults living with dementia.</p>
+          <div class="credential-line">Patience, communication, trust, and an understanding of each student are at the heart of her teaching.</div>
+          <p>Anna continues her own advanced piano studies with Victoria Bogdashevskaya, former principal pianist of the Seattle Symphony. Her goal is to help each student feel heard, supported, challenged, and inspired while building a lasting connection with music.</p>
+          <div class="about-signature" aria-label="Areas of focus">
+            <span class="tag">Nationally Certified Teacher of Music</span><span class="tag">Inclusive learning</span><span class="tag">Active musicianship</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="credentials" id="credentials" aria-labelledby="credentials-title">
+      <div class="shell credentials-grid">
+        <div class="credentials-copy reveal">
+          <div class="credentials-heading">
+            <p class="kicker">Credentials &amp; continuing education</p>
+            <h2 class="section-title" id="credentials-title">Professional foundations. Thoughtful growth.</h2>
+            <p class="section-intro">Anna's formal piano teaching certification is supported by ongoing musicianship and carefully chosen coursework that helps her understand how different students learn and communicate.</p>
+          </div>
+          <div class="credential-list">
+            <article class="credential-item"><span class="credential-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M10 3h12l2 9-8 5-8-5 2-9Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="20" r="7" fill="currentColor"/><path d="m16 15.5 1.35 2.75 3.03.44-2.19 2.13.52 3.01L16 22.4l-2.71 1.43.52-3.01-2.19-2.13 3.03-.44L16 15.5Z" fill="#101b31"/></svg></span><div><h3>Nationally Certified Teacher of Music in Piano</h3><p>Professional certification awarded by the Music Teachers National Association.</p></div></article>
+            <article class="credential-item"><span class="credential-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M13 7v16a5 5 0 1 1-3-4.58V10l14-3v12a5 5 0 1 1-3-4.58V4L13 7Z" fill="currentColor"/></svg></span><div><h3>Ongoing advanced piano study</h3><p>Continuing study with Victoria Bogdashevskaya, former principal pianist of the Seattle Symphony.</p></div></article>
+            <article class="credential-item"><span class="credential-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 27s-10-5.6-10-13a5.5 5.5 0 0 1 10-3.2A5.5 5.5 0 0 1 26 14c0 7.4-10 13-10 13Z" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M11 16h10M16 11v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><div><h3>Inclusive learning coursework</h3><p>Completed University of British Columbia coursework focused on autism and neurodiversity in early childcare and the workplace.</p></div></article>
+            <article class="credential-item"><span class="credential-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 7h20v14H14l-6 5v-5H6V7Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="14" r="1.4" fill="currentColor"/><circle cx="16" cy="14" r="1.4" fill="currentColor"/><circle cx="20" cy="14" r="1.4" fill="currentColor"/></svg></span><div><h3>Communication and psychology</h3><p>Master's degree in Communication and Public Relations from Johns Hopkins University, with additional introductory psychology coursework.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lessons" id="lessons">
+      <div class="shell lesson-layout">
+        <div class="lesson-aside reveal">
+          <p class="kicker">Children · Adults · Beginners · Advanced</p>
+          <h2 class="display">Learn in your own way.</h2>
+          <p class="section-intro">Lessons are personalized around the student's age, experience, learning style, musical interests, and goals.</p>
+          <div class="durations" aria-label="Available lesson lengths">
+            <div class="duration"><strong>30 minutes</strong><span>Ideal for young beginners and focused weekly learning.</span></div>
+            <div class="duration"><strong>60 minutes</strong><span>More time for technique, repertoire, theory, and musicianship.</span></div>
+          </div>
+        </div>
+        <div class="lesson-list reveal">
+          <article class="lesson-item"><span>01</span><div><h3>Play for Joy</h3><p>Learn music you love while developing strong foundations, confidence, and expression.</p></div></article>
+          <article class="lesson-item"><span>02</span><div><h3>RCM &amp; ABRSM Preparation</h3><p>Structured work in repertoire, technique, musicianship, and music theory for examination goals.</p></div></article>
+          <article class="lesson-item"><span>03</span><div><h3>Competition &amp; Performance</h3><p>Individualized coaching for recitals, auditions, competitions, and other performance opportunities.</p></div></article>
+          <article class="lesson-item"><span>04</span><div><h3>Early Childhood Music</h3><p>An engaging introduction to rhythm, listening, keyboard exploration, musical stories, and foundational skills.</p></div></article>
+          <article class="lesson-item"><span>05</span><div><h3>Music Theory &amp; Musicianship</h3><p>Theory can be part of piano lessons or studied more intensively according to each student's goals.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="studio" id="studio">
+      <div class="shell studio-grid">
+        <div class="studio-image reveal"><img src="assets/anna-blue.png" alt="Anna Zhu studying a score at the grand piano" width="1086" height="1448"></div>
+        <div class="studio-copy reveal">
+          <p class="kicker">The studio</p>
+          <h2 class="section-title">A space to learn, create &amp; grow</h2>
+          <p>Centered around a grand piano, the studio offers a calm, welcoming, and focused environment where students can step away from everyday distractions and connect deeply with music.</p>
+          <p>Whether a student is playing a first note or preparing for an advanced performance, curiosity is encouraged, mistakes are part of learning, and every musical milestone deserves to be celebrated.</p>
+          <div class="location"><strong>Renton, Washington · 98059</strong><span>Serving Renton, Newcastle, Bellevue, and nearby communities</span></div>
+          <p><strong style="color:#fff">Detailed studio directions are provided upon lesson confirmation.</strong></p>
+          <a class="button" href="#trial">Visit through a trial lesson <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="philosophy" id="philosophy">
+      <div class="shell">
+        <div class="section-head center reveal">
+          <p class="kicker">Happy learning · Meaningful progress</p>
+          <h2 class="section-title">Music is more than notes.</h2>
+          <p class="section-intro">Students learn best when they feel safe, curious, understood, and excited to return to the piano.</p>
+        </div>
+        <div class="philosophy-grid reveal">
+          <article class="principle"><span class="principle-number">01 · JOY</span><h3>Joy comes first</h3><p>Music should be something students look forward to. Lessons encourage curiosity and creativity while gradually building technique and musicianship.</p></article>
+          <article class="principle"><span class="principle-number">02 · INDIVIDUALITY</span><h3>Every student is different</h3><p>Some students learn by listening, some visually, and others through movement, stories, patterns, questions, or understanding why.</p></article>
+          <article class="principle"><span class="principle-number">03 · TRUST</span><h3>Communication is essential</h3><p>Students are encouraged to say what they love, what feels difficult, and when they would like to try another way. Their ideas are part of learning.</p></article>
+          <article class="principle"><span class="principle-number">04 · GROWTH</span><h3>Little missions, big progress</h3><p>Joyful learning still includes clear goals and small challenges that build curiosity, independence, consistency, and confidence.</p></article>
+        </div>
+        <div class="moon-mission reveal">
+          <svg class="moon-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="#f0d39e"/><path d="M43 11a24 24 0 1 0 10 39A20 20 0 1 1 43 11Z" fill="#23446d"/><circle cx="18" cy="18" r="1.6" fill="#fff"/><circle cx="50" cy="26" r="1" fill="#fff"/></svg>
+          <div><h3>Weekly Music Missions</h3><p>A technique goal, listening activity, practice challenge, creative exercise, or musical discovery gives each student an achievable next step. The goal is not perfection; it is the confidence to keep moving forward.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="shell faq-grid">
+        <div class="faq-intro reveal"><p class="kicker">Questions are welcome</p><h2 class="section-title">Studio FAQ</h2><p class="section-intro">A few practical details for students and families considering lessons.</p></div>
+        <div class="faq-list reveal">
+          <details open><summary>How does tuition payment work?</summary><p>Tuition is accepted via Zelle or cash and is due at the beginning of each month. Monthly tuition reserves the student's regular weekly lesson time.</p></details>
+          <details><summary>What is the cancellation and make-up policy?</summary><p>Please provide at least 24 hours' notice to cancel or reschedule. Eligible make-up lessons may be arranged based on teacher and studio availability.</p></details>
+          <details><summary>Are recitals offered?</summary><p>Yes. Studio recitals are offered twice each year so students can share their progress, build confidence, and celebrate music. Participation is encouraged but not required.</p></details>
+          <details><summary>Do you prepare students for competitions and exams?</summary><p>Yes. Preparation plans can be developed for competitions, auditions, RCM and ABRSM examinations, and other performance opportunities according to the student's level, timeline, and goals.</p></details>
+          <details><summary>Are master lessons available?</summary><p>For selected students seeking advanced development, opportunities for master lessons with university music professors or professional musicians may be available when appropriate.</p></details>
+          <details><summary>What happens when the teacher is on vacation?</summary><p>Planned studio vacations will generally be communicated at least one month in advance so families have time to plan.</p></details>
+          <details><summary>Can parents ask about progress or practice?</summary><p>Absolutely. Questions about practice, repertoire, progress, motivation, scheduling, and lesson goals are always welcome. Communication between students, families, and the teacher is part of the learning process.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="trial" id="trial">
+      <div class="shell trial-grid">
+        <div class="trial-copy reveal">
+          <p class="kicker">Book a trial</p>
+          <h2 class="display">Ready to take flight?</h2>
+          <p>A trial lesson is a chance to meet, explore the piano, and talk about the student's current level, interests, learning style, and goals.</p>
+          <p>No previous piano experience is required. Come as you are and bring your curiosity.</p>
+          <div class="trial-note">
+            <div><strong>Studio area</strong>Renton, WA 98059 · Exact directions after lesson confirmation</div>
+            <div><strong>Email</strong><a href="mailto:moonlovemelody520@gmail.com">moonlovemelody520@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="google-form-card reveal">
+          <svg class="google-form-icon" viewBox="0 0 68 68" aria-hidden="true"><circle cx="34" cy="34" r="34" fill="#edf4fb"/><path d="M43 14a22 22 0 1 0 12 36A19 19 0 1 1 43 14Z" fill="#23446d"/><path d="M32 25v19a5.5 5.5 0 1 1-3-4.9V28l15-3v15a5.5 5.5 0 1 1-3-4.9V22Z" fill="#c9a76b"/></svg>
+          <p class="kicker">Trial lesson inquiry</p>
+          <h3>Tell us about your musical goals.</h3>
+          <p>A short Google Form will open in a new tab. Share the student's experience, interests, and preferred lesson format so Anna can prepare for the first conversation.</p>
+          <div class="google-form-points" aria-label="Inquiry details"><span>Takes only a few minutes</span><span>No Google sign-in should be required</span><span>Your response goes directly to the studio</span></div>
+          <a class="button dark" href="https://docs.google.com/forms/d/e/1FAIpQLSc6c9_bHG8ZmEys1GOgaVO02bmRHWofc457C0pebnBd2_wlbQ/viewform?usp=header" target="_blank" rel="noopener noreferrer">Open trial inquiry form <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <a class="brand footer-brand" href="#home" aria-label="Back to Fly to the Moon home"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><path d="M41 7a25 25 0 1 0 15 41A21 21 0 1 1 41 7Z" fill="#f0d39e"/><path d="M31 18v27a7 7 0 1 1-4-6.2V23l19-4v21a7 7 0 1 1-4-6.2V14Z" fill="#fff"/></svg><span class="brand-copy">FLY TO THE MOON<small>PIANO &amp; MUSIC STUDIO</small></span></a>
+      <div class="footer-copy">Private piano &amp; music theory lessons<br><a href="mailto:moonlovemelody520@gmail.com">moonlovemelody520@gmail.com</a><br>Renton, Washington · 98059 · © <span id="year">2026</span></div>
+      <a class="back-top" href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const header = document.getElementById('site-header');
+      const menuButton = document.getElementById('menu-toggle');
+      const nav = document.getElementById('nav-links');
+      const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 24);
+      updateHeader();
+      window.addEventListener('scroll', updateHeader, { passive: true });
+
+      const closeMenu = () => {
+        nav.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation menu');
+      };
+      menuButton.addEventListener('click', () => {
+        const open = menuButton.getAttribute('aria-expanded') === 'true';
+        if (open) closeMenu();
+        else {
+          nav.classList.add('open');
+          document.body.classList.add('menu-open');
+          menuButton.setAttribute('aria-expanded', 'true');
+          menuButton.setAttribute('aria-label', 'Close navigation menu');
+        }
+      });
+      nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const observer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+      }, { threshold: .12 }) : null;
+      document.querySelectorAll('.reveal').forEach(element => observer ? observer.observe(element) : element.classList.add('visible'));
+    })();
+  </script>
+</body>
+</html>
