@@ -66,3 +66,12 @@ This repository contains the static website for Fly to the Moon Piano & Music St
 ## Living-instruction requirement
 
 This file is a living project handoff. Every agent working in this repository must update `AGENTS.md` whenever it discovers a new constraint, changes architecture or hosting, completes or blocks a deployment step, changes the production directory, modifies privacy-sensitive content, or learns anything future agents would otherwise need to rediscover. Remove stale status notes when they are no longer true, and leave the next agent with an accurate current state and clear next actions.
+
+## Fork custom domain — 2026-11-02
+
+- The owner authorized connecting flytothemoonpiano.com to this fork's GitHub Pages site, superseding the earlier instruction to leave domain DNS unchanged.
+- Pages custom domain: www.flytothemoonpiano.com. GitHub created CNAME on gh-pages; retain this file in future snapshot deployments.
+- Squarespace registrar nameservers were switched from garret.ns.cloudflare.com / tina.ns.cloudflare.com to nsc1 through nsc4.squarespacedns.com.
+- Squarespace website default preset was replaced. DNS now uses @ ALIAS annaschool2333-crypto.github.io and www CNAME annaschool2333-crypto.github.io.
+- Domain Connect and all three Email Security TXT records were preserved.
+- Public DNS resolves to GitHub Pages; www HTTP returned 200. HTTPS certificate issuance was still pending at handoff. Enable Pages HTTPS enforcement once its certificate is ready, then verify HTTPS on apex, www, and album.
